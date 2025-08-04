@@ -1,22 +1,63 @@
-<!doctype html>
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "AI/ML Engineer specializing in LLMs, computer vision, and scalable systems. Open to opportunities at FAANG, OpenAI, Anthropic." } = Astro.props;
+---
+
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- SEO Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:image" content="/og-image.jpg" />
+		
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="/og-image.jpg" />
+		
+		<!-- Preconnect to external domains -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+		<!-- Critical CSS for fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+		
+		<!-- JSON-LD Structured Data -->
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+		<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Arpita Patnaik",
+		"jobTitle": "AI/ML Engineer",
+		"description": "AI/ML Engineer specializing in Large Language Models, Computer Vision, and Distributed Systems",
+		"url": "https://yourusername.github.io",
+		"sameAs": [
+			"https://www.linkedin.com/in/arpitapatnaik10",
+			"https://github.com/arpita31",
+	
+		],
+		"knowsAbout": ["Machine Learning", "Artificial Intelligence", "Deep Learning", "Python", "Computer Vision", "Natural Language Processing"]
+		}
+		</script>
+		
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
