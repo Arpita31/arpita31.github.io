@@ -1,0 +1,31 @@
+---
+import { personalInfo } from '../../data/personal.js';
+---
+
+<section id="contact" class="fade-in">
+  <h2 class="section-title">Let's Build the Future Together</h2>
+  <div class="contact-content">
+    <p class="contact-text">
+      I'm passionate about building intelligent systems that solve real-world problems at scale. 
+      Whether you're looking for an ML/AI Engineer, Senior Software Developer, or innovative problem solver, 
+      let's discuss how we can create impactful technology together. Open to opportunities in FAANG, AI research labs, and cutting-edge startups.
+    </p>
+    <div class="contact-links">
+      <a href={`mailto:${personalInfo.email}`} class="contact-link">
+        📧 {personalInfo.email}
+      </a>
+      <a href={personalInfo.linkedin} class="contact-link">
+        💼 LinkedIn
+      </a>
+      <a href={personalInfo.github} class="contact-link">
+        💻 GitHub
+      </a>
+      <a href={`tel:${personalInfo.phone}`} class="contact-link">
+        📱 {personalInfo.phone}
+      </a>
+      <a href="/resume.pdf" class="contact-link">
+        📄 Resume
+      </a>
+    </div>
+  </div>
+</section>

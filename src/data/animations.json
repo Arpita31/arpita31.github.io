@@ -1,9 +1,0 @@
-{
-  "heroAnimation": {
-    "path": "/animations/developer-animation.json",
-    "loop": true,
-    "autoplay": true,
-    "speed": 1,
-    "renderer": "svg"
-  }
-}

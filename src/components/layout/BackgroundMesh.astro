@@ -1,0 +1,12 @@
+<div class="mesh-bg"></div>
+
+<script>
+  // Add parallax effect to hero background
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('.mesh-bg');
+    if (parallax) {
+      parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+  });
+</script>

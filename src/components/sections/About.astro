@@ -1,0 +1,36 @@
+---
+import { personalInfo } from '../../data/personal.js';
+import StatCard from '../ui/StatCard.astro';
+---
+
+<section id="about" class="fade-in">
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <h3>Innovation-Driven ML/AI Engineer</h3>
+      <p>
+        I'm a results-oriented ML/AI Engineer and Senior Software Developer with 5+ years of production experience 
+        building intelligent systems that scale. My expertise spans machine learning model development, NLP, computer vision, 
+        and enterprise-grade backend systems serving millions of users.
+      </p>
+      <br>
+      <p>
+        Currently pursuing my Master's in Computer Science at the University of Florida (GPA: 3.63/4) while pioneering 
+        cutting-edge solutions in sentiment analysis, recommendation systems, and data privacy technologies. 
+        Passionate about leveraging AI to solve complex real-world problems with measurable business impact.
+      </p>
+      <br>
+      <div class="code-block">
+        <code>
+const expertise = ["ML/AI Systems", "Backend Architecture", "Data Engineering"];<br>
+const mission = "Transform data into intelligent solutions"; 🚀
+        </code>
+      </div>
+    </div>
+    <div class="stats-grid">
+      {personalInfo.stats.map((stat, index) => (
+        <StatCard value={stat.value} label={stat.label} delay={index * 0.2} />
+      ))}
+    </div>
+  </div>
+</section>

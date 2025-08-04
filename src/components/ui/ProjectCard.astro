@@ -1,0 +1,44 @@
+---
+export interface Props {
+  project: {
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+    technologies: string[];
+    links: {
+      github?: string;
+      demo?: string;
+      article?: string;
+    };
+  };
+}
+
+const { project } = Astro.props;
+---
+
+<div class="project-card">
+  <div class="project-image">
+    {project.icon}
+  </div>
+  <div class="project-content">
+    <h3 class="project-title">{project.title}</h3>
+    <p class="project-description">{project.description}</p>
+    <div class="project-tech">
+      {project.technologies.map(tech => (
+        <span class="tech-tag">{tech}</span>
+      ))}
+    </div>
+    <div class="project-links">
+      {project.links.github && (
+        <a href={project.links.github} class="project-link">GitHub →</a>
+      )}
+      {project.links.demo && (
+        <a href={project.links.demo} class="project-link">Live Demo →</a>
+      )}
+      {project.links.article && (
+        <a href={project.links.article} class="project-link">Article →</a>
+      )}
+    </div>
+  </div>
+</div>
