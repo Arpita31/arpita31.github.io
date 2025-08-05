@@ -1,7 +1,10 @@
 ---
-// src/pages/index.astro - Working Modular Version with Lottie
+// src/pages/index.astro - Fixed Version with 40% Image Layout
 import Layout from '../layouts/Layout.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
+
+// Get the base URL from Astro environment for proper asset paths
+const baseUrl = import.meta.env.BASE_URL;
 
 // Personal data (you can move this to a separate file later)
 const personalInfo = {
@@ -22,30 +25,34 @@ const projects = [
   {
     title: "M3: Mood Movie Matcher - AI Recommendation Engine",
     description: "Engineered intelligent movie recommendation system leveraging RoBERTa sentiment analysis and Autoencoders on MovieLens dataset. Features personalized matching algorithms and hidden gem discovery through advanced NLP and deep learning techniques.",
-    icon: "🎬",
+    icon: `${baseUrl}project-movie.jpg`, // ✅ Fixed with base URL
+    iconEmoji: "🎬",
     technologies: ["PyTorch", "RoBERTa", "Transformers", "scikit-learn", "NLP"],
-    github: "https://github.com/arpita31"
+    github: "https://github.com/Arpita31/Mood-Movie-Matcher"
   },
   {
     title: "Safe Data Cloak - Enterprise Privacy AI System",
     description: "Built production-ready data privacy platform utilizing advanced NLP transformers for intelligent redaction of PII, sensitive data, and domain-specific information. Features enterprise API integration and ML-powered unredaction capabilities using Random Forest algorithms.",
-    icon: "🔐",
+    icon: `${baseUrl}project-privacy.jpg`, // ✅ Fixed with base URL
+    iconEmoji: "🔐",
     technologies: ["spaCy", "Transformers", "NLTK", "Random Forest", "Enterprise APIs"],
-    github: "https://github.com/arpita31"
+    github: "https://github.com/Arpita31/Safe-Data-Cloak"
   },
   {
     title: "CodedCore - Full-Stack Technical Platform",
     description: "Architected comprehensive blogging platform for algorithms and data structures education. Built with Django framework, PostgreSQL optimization, and responsive Bootstrap UI. Designed for scalability and optimal performance with advanced database management.",
-    icon: "💻",
+    icon: `${baseUrl}project-codecore.jpg`, // ✅ Fixed with base URL
+    iconEmoji: "💻",
     technologies: ["Django", "PostgreSQL", "Bootstrap", "Full-Stack", "Database Optimization"],
-    github: "https://github.com/arpita31"
+    github: "https://github.com/Arpita31/codedcore"
   },
   {
     title: "Computer Vision - Spherical Object Tracking",
     description: "Developed real-time computer vision application achieving accurate motion analysis and counting of spherical objects. Implemented advanced tracking algorithms using Java, JavaFX, and OpenCV for precise directional movement detection and analysis.",
-    icon: "👁️",
+    icon: `${baseUrl}project-vision.jpg`, // ✅ Fixed with base URL
+    iconEmoji: "👁️",
     technologies: ["OpenCV", "Java", "JavaFX", "Computer Vision", "Real-time Processing"],
-    github: "https://github.com/arpita31"
+    github: "https://github.com/Arpita31/Ball-imageProcessing-opencv"
   }
 ];
 ---
@@ -59,8 +66,8 @@ const projects = [
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog">Blog</a></li>
+            <li><a href={`${baseUrl}`}>Home</a></li>
+            <li><a href={`${baseUrl}blog`}>Blog</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -213,25 +220,54 @@ const mission = "Transform data into intelligent solutions"; 🚀
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section - Fixed with 40% Image Layout -->
     <section id="projects" class="fade-in">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
-            {projects.map(project => (
+            {projects.map((project, index) => (
                 <div class="project-card">
-                    <div class="project-image">{project.icon}</div>
-                    <div class="project-content">
-                        <h3 class="project-title">{project.title}</h3>
-                        <p class="project-description">{project.description}</p>
-                        <div class="project-tech">
-                            {project.technologies.map(tech => (
-                                <span class="tech-tag">{tech}</span>
-                            ))}
+                    <!-- Image section - exactly 40% of card height -->
+                    <div class="project-image">
+                        <img 
+                            src={project.icon} 
+                            alt={`${project.title} preview`} 
+                            class="project-img"
+                            loading="lazy"
+                            onload="this.style.opacity = '1';"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                            style="opacity: 0; transition: opacity 0.3s ease;"
+                        />
+                        <!-- Fallback emoji if image fails to load -->
+                        <div class="emoji-fallback" style="display: none;">
+                            {project.iconEmoji}
                         </div>
-                        <div class="project-links">
-                            <a href={project.github} class="project-link">GitHub →</a>
-                            <a href="#" class="project-link">Live Demo →</a>
-                            <a href="#" class="project-link">Article →</a>
+                    </div>
+
+                    <!-- Content section - remaining 60% of card height -->
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">{project.title}</h3>
+                            <p class="project-description">{project.description}</p>
+                        </div>
+                        
+                        <div class="project-footer">
+                            <div class="project-tech">
+                                {project.technologies.map(tech => (
+                                    <span class="tech-tag">{tech}</span>
+                                ))}
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href={project.github} class="project-link" target="_blank" rel="noopener">
+                                    GitHub →
+                                </a>
+                                <a href="#" class="project-link">
+                                    Live Demo →
+                                </a>
+                                <a href="#" class="project-link">
+                                    Article →
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -300,16 +336,13 @@ const mission = "Transform data into intelligent solutions"; 🚀
                 <a href={`mailto:${personalInfo.email}`} class="contact-link">
                     📧 {personalInfo.email}
                 </a>
-                <a href={personalInfo.linkedin} class="contact-link">
+                <a href={personalInfo.linkedin} class="contact-link" target="_blank" rel="noopener">
                     💼 LinkedIn
                 </a>
-                <a href={personalInfo.github} class="contact-link">
+                <a href={personalInfo.github} class="contact-link" target="_blank" rel="noopener">
                     💻 GitHub
                 </a>
-                <a href={`tel:${personalInfo.phone}`} class="contact-link">
-                    📱 {personalInfo.phone}
-                </a>
-                <a href="/resume.pdf" class="contact-link">
+                <a href={`${baseUrl}resume.pdf`} class="contact-link">
                     📄 Resume
                 </a>
             </div>
@@ -353,17 +386,16 @@ const mission = "Transform data into intelligent solutions"; 🚀
         }
 
         .mesh-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120, 198, 255, 0.1) 0%, transparent 50%);
-            z-index: -2;
-            animation: meshFloat 20s ease-in-out infinite;
+          position: fixed;
+          inset: 0;
+          z-index: -1;
+          pointer-events: none;
+          background: linear-gradient(
+            to bottom,
+            #1a2233,  /* Navy Top */
+            #18181b,  /* Gray Middle */
+            #121212   /* Deep Black Bottom */
+          );
         }
 
         @keyframes meshFloat {
@@ -602,11 +634,11 @@ const mission = "Transform data into intelligent solutions"; 🚀
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .tech-float:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-        .tech-float:nth-child(2) { top: 60%; left: 15%; animation-delay: 1s; }
-        .tech-float:nth-child(3) { top: 30%; right: 10%; animation-delay: 2s; }
-        .tech-float:nth-child(4) { top: 70%; right: 15%; animation-delay: 3s; }
+ 
+        .tech-float:nth-child(1) { top: 10%; left: 50%; animation-delay: 0s; }
+        .tech-float:nth-child(2) { top: 27%; left: 50%; animation-delay: 1s; }
+        .tech-float:nth-child(3) { top: 48%; right: 2%; animation-delay: 2s; }
+        .tech-float:nth-child(4) { top: 19%; right: 8%; animation-delay: 3s; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -725,10 +757,13 @@ const mission = "Transform data into intelligent solutions"; 🚀
             border: 1px solid rgba(0, 212, 255, 0.2);
         }
 
+        /* ✅ FIXED PROJECT CARDS - 40% IMAGE LAYOUT */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 40px;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .project-card {
@@ -738,6 +773,9 @@ const mission = "Transform data into intelligent solutions"; 🚀
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             position: relative;
+            height: 500px; /* Fixed card height for consistency */
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
@@ -747,45 +785,103 @@ const mission = "Transform data into intelligent solutions"; 🚀
         }
 
         .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            height: 40%; /* Exactly 40% of the card height */
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0; /* Prevent shrinking */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fills the space properly */
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        /* Fallback emoji styling */
+        .emoji-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
             color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .project-content {
-            padding: 30px;
+            padding: 24px;
+            flex: 1; /* Takes up remaining 60% of card height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-header {
+            flex: 1;
         }
 
         .project-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: var(--text-primary);
+            line-height: 1.3;
+            /* Limit title to 2 lines */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            /* Limit description to prevent overflow */
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+
+        .project-footer {
+            flex-shrink: 0; /* Prevent shrinking */
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 6px;
+            margin-bottom: 16px;
         }
 
         .tech-tag {
             background: rgba(102, 126, 234, 0.1);
             color: #667eea;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 12px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-family: 'Fira Code', monospace;
+            font-weight: 500;
+            white-space: nowrap;
         }
 
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 16px;
         }
 
         .project-link {
@@ -794,10 +890,43 @@ const mission = "Transform data into intelligent solutions"; 🚀
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .project-link:hover {
             color: var(--text-primary);
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--text-accent);
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        /* Different gradients for each project type */
+        .project-card:nth-child(1) .project-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* AI/ML - Purple */
+        }
+
+        .project-card:nth-child(2) .project-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); /* Security - Pink */
+        }
+
+        .project-card:nth-child(3) .project-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); /* Full-stack - Blue */
+        }
+
+        .project-card:nth-child(4) .project-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); /* Computer Vision - Green */
         }
 
         .experience-timeline {
@@ -924,6 +1053,7 @@ const mission = "Transform data into intelligent solutions"; 🚀
             overflow-x: auto;
         }
 
+        /* Responsive Design */
         @media (max-width: 1024px) {
             .hero-content-wrapper {
                 grid-template-columns: 1fr;
@@ -940,6 +1070,10 @@ const mission = "Transform data into intelligent solutions"; 🚀
                 transform: none;
                 margin-top: 40px;
                 justify-content: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             }
         }
 
@@ -975,6 +1109,23 @@ const mission = "Transform data into intelligent solutions"; 🚀
                 grid-template-columns: 1fr;
             }
 
+            .project-card {
+                height: 450px; /* Slightly smaller on mobile */
+            }
+
+            .project-content {
+                padding: 20px;
+            }
+
+            .project-title {
+                font-size: 1.1rem;
+            }
+
+            .project-description {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 3; /* Show fewer lines on mobile */
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -987,6 +1138,25 @@ const mission = "Transform data into intelligent solutions"; 🚀
 
             .tech-float {
                 display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-card {
+                height: 400px; /* Even smaller on very small screens */
+            }
+
+            .project-image {
+                height: 35%; /* Slightly less image space on mobile */
+            }
+
+            .project-content {
+                padding: 16px;
+            }
+
+            .tech-tag {
+                font-size: 0.7rem;
+                padding: 3px 8px;
             }
         }
 
@@ -1013,8 +1183,8 @@ const mission = "Transform data into intelligent solutions"; 🚀
         }
     </style>
 
-    <script>
-        // 🎯 LOTTIE ANIMATION LOADER - This ensures your JSON animation works!
+    <script define:vars={{ baseUrl }}>
+        // 🎯 FIXED LOTTIE ANIMATION LOADER with correct base URL
         function loadLottieAnimation() {
             const script = document.createElement('script');
             script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
@@ -1027,7 +1197,7 @@ const mission = "Transform data into intelligent solutions"; 🚀
                             renderer: 'svg',
                             loop: true,
                             autoplay: true,
-                            path: 'public/developer_animation.json' // 🔥 This loads your JSON file!
+                            path: `${baseUrl}developer_animation.json` // ✅ FIXED: Using correct base URL
                         });
 
                         // Add hover effects
@@ -1039,10 +1209,14 @@ const mission = "Transform data into intelligent solutions"; 🚀
                             animation.setSpeed(1);
                         });
 
-                        // Handle loading errors
+                        // Handle loading errors gracefully
                         animation.addEventListener('data_failed', () => {
                             console.error('Failed to load Lottie animation');
-                            container.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem; color: var(--text-accent);">👨‍💻</div>';
+                            container.innerHTML = `
+                                <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem; color: var(--text-accent);">
+                                    👩🏻‍💻
+                                </div>
+                            `;
                         });
 
                         // Success callback
@@ -1052,7 +1226,11 @@ const mission = "Transform data into intelligent solutions"; 🚀
 
                     } catch (error) {
                         console.error('Error initializing Lottie:', error);
-                        container.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem; color: var(--text-accent);">👨‍💻</div>';
+                        container.innerHTML = `
+                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem; color: var(--text-accent);">
+                                👩🏻‍💻
+                            </div>
+                        `;
                     }
                 }
             };
@@ -1061,7 +1239,11 @@ const mission = "Transform data into intelligent solutions"; 🚀
                 console.error('Failed to load Lottie library');
                 const container = document.getElementById('lottie-container');
                 if (container) {
-                    container.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem; color: var(--text-accent);">👨‍💻</div>';
+                    container.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 4rem; color: var(--text-accent);">
+                            👩🏻‍💻
+                        </div>
+                    `;
                 }
             };
             

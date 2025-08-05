@@ -1,12 +1,40 @@
-<div class="mesh-bg"></div>
+<div class="mesh-bg">
+</div>
 
 <script>
-  // Add parallax effect to hero background
   window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelector('.mesh-bg');
-    if (parallax) {
-      parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+    const scrollY = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const progress = Math.min(scrollY / maxScroll, 1);
+
+    const clouds = document.querySelector('.bg-layer.clouds');
+    const stars = document.querySelector('.bg-layer.stars');
+    const endspace = document.querySelector('.bg-layer.endspace');
+
+    // Stage 1: fade out clouds
+    if (progress < 0.4) {
+      clouds.style.opacity = 1 - progress / 0.4;
+      stars.style.opacity = 0;
+      endspace.style.opacity = 0;
+    }
+
+    // Stage 2: fade in stars
+    if (progress >= 0.4 && progress <= 0.75) {
+      const starOpacity = (progress - 0.4) / 0.35;
+      clouds.style.opacity = 0;
+      stars.style.opacity = starOpacity;
+      endspace.style.opacity = 0;
+    }
+
+    // Stage 3: fade in endspace
+    if (progress > 0.75) {
+      const endOpacity = (progress - 0.75) / 0.25;
+      clouds.style.opacity = 0;
+      stars.style.opacity = 1 - endOpacity;
+      endspace.style.opacity = endOpacity;
     }
   });
 </script>
+
+
+

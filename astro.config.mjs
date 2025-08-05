@@ -6,7 +6,7 @@ import compress from "astro-compress";
 
 export default defineConfig({
   site: "https://Arpita31.github.io",
-  base: "/portfolio",
+  base: "",
   integrations: [
     tailwind(),
     react(),
