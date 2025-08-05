@@ -10,14 +10,17 @@ const baseUrl = import.meta.env.BASE_URL;
 const personalInfo = {
   name: "Arpita Patnaik",
   title: "ML/AI Engineer & Senior Software Developer",
-  description: "Architecting intelligent systems and scalable backend solutions with 5+ years of production experience. Specializing in Machine Learning, NLP, Computer Vision, and high-performance distributed systems that drive business impact.",
+  description: "With 5+ years of experience, I’m passionate about architecting intelligent systems that address real-world challenges and drive business results. I specialize in building scalable backend solutions, optimizing databases, and delivering impactful ML and NLP applications.",
   email: "patnaikarpita100@gmail.com",
   linkedin: "https://www.linkedin.com/in/arpitapatnaik10",
   github: "https://github.com/arpita31",
   achievements: [
-    { value: "75%", label: "Latency ↓" },
+    { value: "💡"}, //label: "in Curiosity" },
     { value: "5+", label: "Years Exp" },
-    { value: "10+", label: "ML Projects" }
+    { value: "🎯"}//, label: "Latency ↓" },
+
+    // { value: "75%", label: "Latency ↓" },
+    // { value: "10+", label: "Projects" }
   ]
 };
 
@@ -27,7 +30,7 @@ const projects = [
     description: "Engineered intelligent movie recommendation system leveraging RoBERTa sentiment analysis and Autoencoders on MovieLens dataset. Features personalized matching algorithms and hidden gem discovery through advanced NLP and deep learning techniques.",
     icon: `${baseUrl}project-movie.jpg`, // ✅ Fixed with base URL
     iconEmoji: "🎬",
-    technologies: ["PyTorch", "RoBERTa", "Transformers", "scikit-learn", "NLP"],
+    technologies: ["Python", "PyTorch", "RoBERTa", "Transformers", "scikit-learn", "Machine Learning", "NLP"],
     github: "https://github.com/Arpita31/Mood-Movie-Matcher"
   },
   {
@@ -35,7 +38,7 @@ const projects = [
     description: "Built production-ready data privacy platform utilizing advanced NLP transformers for intelligent redaction of PII, sensitive data, and domain-specific information. Features enterprise API integration and ML-powered unredaction capabilities using Random Forest algorithms.",
     icon: `${baseUrl}project-privacy.jpg`, // ✅ Fixed with base URL
     iconEmoji: "🔐",
-    technologies: ["spaCy", "Transformers", "NLTK", "Random Forest", "Enterprise APIs"],
+    technologies: ["Python", "spaCy", "Transformers", "NLTK", "Random Forest", "scikit-learn", "sentence transformers"],
     github: "https://github.com/Arpita31/Safe-Data-Cloak"
   },
   {
@@ -43,7 +46,7 @@ const projects = [
     description: "Architected comprehensive blogging platform for algorithms and data structures education. Built with Django framework, PostgreSQL optimization, and responsive Bootstrap UI. Designed for scalability and optimal performance with advanced database management.",
     icon: `${baseUrl}project-codecore.jpg`, // ✅ Fixed with base URL
     iconEmoji: "💻",
-    technologies: ["Django", "PostgreSQL", "Bootstrap", "Full-Stack", "Database Optimization"],
+    technologies: ["Python", "Django", "PostgreSQL", "Bootstrap", "Full-Stack", "Database Optimization"],
     github: "https://github.com/Arpita31/codedcore"
   },
   {
@@ -53,7 +56,16 @@ const projects = [
     iconEmoji: "👁️",
     technologies: ["OpenCV", "Java", "JavaFX", "Computer Vision", "Real-time Processing"],
     github: "https://github.com/Arpita31/Ball-imageProcessing-opencv"
+  },
+  {
+    title: "LeoZen Bot - Motivational Discord Companion",
+    description: "Engineered a dynamic Discord bot for enhanced user engagement through real-time motivational quotes. Integrated zenquotes.io using custom web scraping scripts and Discord API for automated content delivery and seamless chat interaction.",
+    icon: `${baseUrl}project-leozen.png`, // 📘 Customize or update image as needed
+    iconEmoji: "💬",
+    technologies: ["Python", "Discord API", "BeautifulSoup", "Requests", "Web Scraping"],
+    github: "https://github.com/Arpita31/LeoZen-Bot"
   }
+
 ];
 ---
 
@@ -62,6 +74,10 @@ const projects = [
     
     <!-- Background Mesh -->
     <div class="mesh-bg"></div>
+    
+    <!-- Shooting Stars -->
+    <div class="stars" id="static-stars"></div>
+    <div class="shooting-stars" id="shooting-stars"></div>
     
     <!-- Navigation -->
     <nav>
@@ -116,23 +132,20 @@ const projects = [
         <h2 class="section-title">About Me</h2>
         <div class="about-grid">
             <div class="about-text">
-                <h3>Innovation-Driven ML/AI Engineer</h3>
+                <h3>Innovation-Driven ML/AI/Software Engineer</h3>
                 <p>
-                    I'm a results-oriented ML/AI Engineer and Senior Software Developer with 5+ years of production experience 
-                    building intelligent systems that scale. My expertise spans machine learning model development, NLP, computer vision, 
-                    and enterprise-grade backend systems serving millions of users.
+                    I’m a results-driven ML/AI Engineer and seasoned Software Developer with over 5 years of professional experience architecting intelligent, scalable systems in production. My expertise spans backend development, machine learning, NLP, and computer vision—building enterprise-grade solutions that serve millions. I specialize in creating robust architectures and deploying high-performance applications that drive measurable impact.
                 </p>
                 <br>
                 <p>
-                    Currently pursuing my Master's in Computer Science at the University of Florida (GPA: 3.63/4) while pioneering 
-                    cutting-edge solutions in sentiment analysis, recommendation systems, and data privacy technologies. 
-                    Passionate about leveraging AI to solve complex real-world problems with measurable business impact.
+                    Recently graduated with a Master’s in Computer Science from the University of Florida (GPA: 3.63/4), I’ve led impactful projects in sentiment-aware recommendation engines, privacy-focused NLP platforms, and real-time image processing systems. I’m passionate about applying AI to solve real-world challenges, and I thrive at the intersection of deep tech, clean system design, and business value—delivering solutions that are innovative, secure, and production-ready.
                 </p>
                 <br>
                 <div class="code-block">
                     <code>
-const expertise = ["ML/AI Systems", "Backend Architecture", "Data Engineering"];<br>
-const mission = "Transform data into intelligent solutions"; 🚀
+                        const expertise = ["AI/ML Engineering", "Scalable Backend Systems", "Intelligent Data Platforms"];
+                        <br/>
+                        const mission = "Design intelligent technologies that empower people, uplift lives, and solve meaningful problems."; 
                     </code>
                 </div>
             </div>
@@ -147,7 +160,7 @@ const mission = "Transform data into intelligent solutions"; 🚀
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">10+</span>
-                    <div class="stat-label">ML/AI Projects Deployed</div>
+                    <div class="stat-label">Projects Deployed</div>
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">3.63</span>
@@ -242,7 +255,6 @@ const mission = "Transform data into intelligent solutions"; 🚀
                             {project.iconEmoji}
                         </div>
                     </div>
-
                     <!-- Content section - remaining 60% of card height -->
                     <div class="project-content">
                         <div class="project-header">
@@ -261,12 +273,12 @@ const mission = "Transform data into intelligent solutions"; 🚀
                                 <a href={project.github} class="project-link" target="_blank" rel="noopener">
                                     GitHub →
                                 </a>
-                                <a href="#" class="project-link">
+                                {/* <a href="#" class="project-link">
                                     Live Demo →
                                 </a>
                                 <a href="#" class="project-link">
                                     Article →
-                                </a>
+                                </a> */}
                             </div>
                         </div>
                     </div>
@@ -280,9 +292,9 @@ const mission = "Transform data into intelligent solutions"; 🚀
         <h2 class="section-title">Professional Journey</h2>
         <div class="experience-timeline">
             <div class="experience-item">
-                <div class="experience-date">Aug 2023 - Present</div>
-                <h3 class="experience-title">Graduate Research Assistant & MS Computer Science</h3>
-                <div class="experience-company">University of Florida</div>
+                <div class="experience-date">Aug 2023 - May 2025</div>
+                <h3 class="experience-title">Master of Science in Computer Science</h3>
+                <div class="experience-company">University of Florida, USA</div>
                 <p class="experience-description">
                     Pursuing advanced studies in Machine Learning, Data Engineering, and Computer Network Security while 
                     maintaining 3.63/4.0 GPA. Conducting cutting-edge research in AI systems and earning Achievement Award 
@@ -290,7 +302,6 @@ const mission = "Transform data into intelligent solutions"; 🚀
                     undergraduate students in complex technical problem-solving.
                 </p>
             </div>
-
             <div class="experience-item">
                 <div class="experience-date">Jul 2016 - Aug 2021</div>
                 <h3 class="experience-title">Senior Software Engineer</h3>
@@ -309,10 +320,9 @@ const mission = "Transform data into intelligent solutions"; 🚀
                     interfaces with Dark Mode themes using DevExpress/WinForms/WPF across 5 Windows applications.
                 </p>
             </div>
-
             <div class="experience-item">
-                <div class="experience-date">Aug 2012 - May 2016</div>
-                <h3 class="experience-title">Bachelor of Technology - Information Technology</h3>
+                <div class="experience-date">Aug 2012 - Jun 2016</div>
+                <h3 class="experience-title">Bachelor of Technology in Information Technology</h3>
                 <div class="experience-company">National Institute of Science and Technology, India</div>
                 <p class="experience-description">
                     Graduated with 8.19/10 CGPA with strong foundation in computer science fundamentals, data structures, 
@@ -328,9 +338,7 @@ const mission = "Transform data into intelligent solutions"; 🚀
         <h2 class="section-title">Let's Build the Future Together</h2>
         <div class="contact-content">
             <p class="contact-text">
-                I'm passionate about building intelligent systems that solve real-world problems at scale. 
-                Whether you're looking for an ML/AI Engineer, Senior Software Developer, or innovative problem solver, 
-                let's discuss how we can create impactful technology together. Open to opportunities in FAANG, AI research labs, and cutting-edge startups.
+                I’m driven by a deep passion for building intelligent systems that solve meaningful, real-world problems at scale. With 5+ years of hands-on experience in production-grade software development and advanced AI/ML applications, I bring both engineering precision and creative problem-solving to every project. Whether you're seeking a Machine Learning Engineer, Backend Systems Architect, or innovative builder of AI-powered solutions, I’m excited to explore how we can create technology that truly makes a difference.
             </p>
             <div class="contact-links">
                 <a href={`mailto:${personalInfo.email}`} class="contact-link">
@@ -354,835 +362,6 @@ const mission = "Transform data into intelligent solutions"; 🚀
         <p>&copy; 2025 {personalInfo.name}. Built with ❤️ and cutting-edge technology. AWS Certified Cloud Practitioner.</p>
     </footer>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-accent: #00d4ff;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-tech: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --shadow-primary: 0 20px 40px rgba(0, 212, 255, 0.1);
-            --shadow-hover: 0 30px 60px rgba(0, 212, 255, 0.2);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .mesh-bg {
-          position: fixed;
-          inset: 0;
-          z-index: -1;
-          pointer-events: none;
-          background: linear-gradient(
-            to bottom,
-            #1a2233,  /* Navy Top */
-            #18181b,  /* Gray Middle */
-            #121212   /* Deep Black Bottom */
-          );
-        }
-
-        @keyframes meshFloat {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg); 
-            }
-            50% { 
-                transform: translateY(-20px) rotate(1deg); 
-            }
-        }
-
-        nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            padding: 12px 24px;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav:hover {
-            background: rgba(17, 17, 17, 0.9);
-            border-color: rgba(0, 212, 255, 0.3);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--text-accent);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-tech);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 0 20px;
-        }
-
-        .hero-content-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            max-width: 1400px;
-            width: 100%;
-            align-items: center;
-        }
-
-        .hero-text {
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero-text h1 {
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: var(--gradient-tech);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .hero .description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 50px;
-            line-height: 1.7;
-        }
-
-        .hero-visual {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lottie-animation {
-            width: 100%;
-            height: 400px;
-            max-width: 600px;
-            animation: containerFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes containerFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .achievement-badges {
-            position: relative;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 15px;
-            padding: 15px 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            animation: badgeFloat 5s ease-in-out infinite;
-            min-width: 80px;
-        }
-
-        .badge-1 { animation-delay: 0s; }
-        .badge-2 { animation-delay: 1s; }
-        .badge-3 { animation-delay: 2s; }
-
-        @keyframes badgeFloat {
-            0%, 100% { 
-                transform: translateY(0px);
-                box-shadow: 0 5px 15px rgba(0, 212, 255, 0.1);
-            }
-            50% { 
-                transform: translateY(-8px);
-                box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
-            }
-        }
-
-        .badge-value {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-accent);
-            margin-bottom: 5px;
-        }
-
-        .badge-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--gradient-tech);
-            color: white;
-            box-shadow: var(--shadow-primary);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-accent);
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        .tech-float {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            animation: float 6s ease-in-out infinite;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
- 
-        .tech-float:nth-child(1) { top: 10%; left: 50%; animation-delay: 0s; }
-        .tech-float:nth-child(2) { top: 27%; left: 50%; animation-delay: 1s; }
-        .tech-float:nth-child(3) { top: 48%; right: 2%; animation-delay: 2s; }
-        .tech-float:nth-child(4) { top: 19%; right: 8%; animation-delay: 3s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        section {
-            padding: 120px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 80px;
-            background: var(--gradient-primary);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .about-text h3 {
-            color: var(--text-primary);
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-accent);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .skill-category {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-            border-color: rgba(0, 212, 255, 0.3);
-        }
-
-        .skill-category h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--text-accent);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--text-accent);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        /* ✅ FIXED PROJECT CARDS - 40% IMAGE LAYOUT */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 32px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            height: 500px; /* Fixed card height for consistency */
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(0, 212, 255, 0.3);
-        }
-
-        .project-image {
-            height: 40%; /* Exactly 40% of the card height */
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0; /* Prevent shrinking */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures image fills the space properly */
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05); /* Slight zoom on hover */
-        }
-
-        /* Fallback emoji styling */
-        .emoji-fallback {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .project-content {
-            padding: 24px;
-            flex: 1; /* Takes up remaining 60% of card height */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .project-header {
-            flex: 1;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-            line-height: 1.3;
-            /* Limit title to 2 lines */
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 16px;
-            /* Limit description to prevent overflow */
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-size: 0.9rem;
-        }
-
-        .project-footer {
-            flex-shrink: 0; /* Prevent shrinking */
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 16px;
-        }
-
-        .tech-tag {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-family: 'Fira Code', monospace;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .project-link {
-            color: var(--text-accent);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .project-link:hover {
-            color: var(--text-primary);
-        }
-
-        .project-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--text-accent);
-            transition: width 0.3s ease;
-        }
-
-        .project-link:hover::after {
-            width: 100%;
-        }
-
-        /* Different gradients for each project type */
-        .project-card:nth-child(1) .project-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* AI/ML - Purple */
-        }
-
-        .project-card:nth-child(2) .project-image {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); /* Security - Pink */
-        }
-
-        .project-card:nth-child(3) .project-image {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); /* Full-stack - Blue */
-        }
-
-        .project-card:nth-child(4) .project-image {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); /* Computer Vision - Green */
-        }
-
-        .experience-timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gradient-tech);
-        }
-
-        .experience-item {
-            position: relative;
-            margin-bottom: 60px;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(10px);
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -49px;
-            top: 30px;
-            width: 16px;
-            height: 16px;
-            background: var(--text-accent);
-            border-radius: 50%;
-            border: 4px solid var(--bg-primary);
-        }
-
-        .experience-date {
-            color: var(--text-accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .experience-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 5px;
-        }
-
-        .experience-company {
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .experience-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-text {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-accent);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 15px 25px;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 50px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover {
-            background: rgba(0, 212, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        footer {
-            background: var(--bg-secondary);
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .code-block {
-            background: var(--bg-secondary);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            font-family: 'Fira Code', monospace;
-            color: var(--text-accent);
-            margin: 20px 0;
-            overflow-x: auto;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero-content-wrapper {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .hero-visual {
-                height: 350px;
-            }
-
-            .achievement-badges {
-                position: static;
-                transform: none;
-                margin-top: 40px;
-                justify-content: center;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 20px;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-
-            .hero-visual {
-                height: 300px;
-            }
-
-            .achievement-badges {
-                flex-direction: column;
-                gap: 15px;
-                align-items: center;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card {
-                height: 450px; /* Slightly smaller on mobile */
-            }
-
-            .project-content {
-                padding: 20px;
-            }
-
-            .project-title {
-                font-size: 1.1rem;
-            }
-
-            .project-description {
-                font-size: 0.85rem;
-                -webkit-line-clamp: 3; /* Show fewer lines on mobile */
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .tech-float {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .project-card {
-                height: 400px; /* Even smaller on very small screens */
-            }
-
-            .project-image {
-                height: 35%; /* Slightly less image space on mobile */
-            }
-
-            .project-content {
-                padding: 16px;
-            }
-
-            .tech-tag {
-                font-size: 0.7rem;
-                padding: 3px 8px;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-
     <script define:vars={{ baseUrl }}>
         // 🎯 FIXED LOTTIE ANIMATION LOADER with correct base URL
         function loadLottieAnimation() {
@@ -1199,16 +378,15 @@ const mission = "Transform data into intelligent solutions"; 🚀
                             autoplay: true,
                             path: `${baseUrl}developer_animation.json` // ✅ FIXED: Using correct base URL
                         });
-
+                        
                         // Add hover effects
                         container.addEventListener('mouseenter', () => {
                             animation.setSpeed(1.5);
                         });
-
                         container.addEventListener('mouseleave', () => {
                             animation.setSpeed(1);
                         });
-
+                        
                         // Handle loading errors gracefully
                         animation.addEventListener('data_failed', () => {
                             console.error('Failed to load Lottie animation');
@@ -1218,12 +396,11 @@ const mission = "Transform data into intelligent solutions"; 🚀
                                 </div>
                             `;
                         });
-
+                        
                         // Success callback
                         animation.addEventListener('data_ready', () => {
                             console.log('✅ Lottie animation loaded successfully!');
                         });
-
                     } catch (error) {
                         console.error('Error initializing Lottie:', error);
                         container.innerHTML = `
@@ -1290,14 +467,14 @@ const mission = "Transform data into intelligent solutions"; 🚀
         const subtitleElement = document.querySelector('.hero .subtitle');
         if (subtitleElement) {
             const roles = [
-                'ML/AI Engineer & Senior Software Developer',
-                'Machine Learning Specialist',
-                'Backend Systems Architect',
-                'Computer Vision Engineer',
-                'NLP & Data Science Expert',
-                'Full-Stack AI Developer'
+                'AI Engineer',
+                'Machine Learning Engineer',
+                'Senior Software Developer',
+                'Backend Architect',
+                'NLP Specialist',
+                'Data Science Expert',
+                'Full-Stack AI Developer',
             ];
-
             let currentRoleIndex = 0;
             let isDeleting = false;
             let currentText = '';
@@ -1360,5 +537,161 @@ const mission = "Transform data into intelligent solutions"; 🚀
                 parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
         });
+
+        // ✅ SHOOTING STARS IMPLEMENTATION
+        const shootingStarsConfig = {
+            maxShootingStars: 4,
+            maxStaticStars: 120,
+            shootingStarInterval: 4000,
+            colors: ['default', 'blue', 'purple', 'gold'],
+            sizes: ['small', 'medium', 'large'],
+            sizeWeights: [0.6, 0.3, 0.1]
+        };
+
+        let activeShootingStars = 0;
+        let shootingStarInterval;
+        let isPageVisible = true;
+
+        // Create static twinkling stars
+        function createStaticStars() {
+            const starsContainer = document.getElementById('static-stars');
+            if (!starsContainer) return;
+            
+            for (let i = 0; i < shootingStarsConfig.maxStaticStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 4 + 2) + 's';
+                star.style.opacity = Math.random() * 0.5 + 0.2;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Get random size with weighted probability
+        function getRandomStarSize() {
+            const random = Math.random();
+            let cumulativeWeight = 0;
+            
+            for (let i = 0; i < shootingStarsConfig.sizes.length; i++) {
+                cumulativeWeight += shootingStarsConfig.sizeWeights[i];
+                if (random <= cumulativeWeight) {
+                    return shootingStarsConfig.sizes[i];
+                }
+            }
+            
+            return shootingStarsConfig.sizes[0];
+        }
+
+        // Create individual shooting star with longer tail
+        function createLongShootingStar() {
+            if (activeShootingStars >= shootingStarsConfig.maxShootingStars || !isPageVisible) return;
+            
+            const container = document.getElementById('shooting-stars');
+            if (!container) return;
+            
+            const shootingStar = document.createElement('div');
+            const size = getRandomStarSize();
+            const color = shootingStarsConfig.colors[Math.floor(Math.random() * shootingStarsConfig.colors.length)];
+            
+            shootingStar.className = `shooting-star ${size} ${color}`;
+            
+            // Better positioning for more natural shooting star paths
+            const startFromTop = Math.random() > 0.2; // 80% from top
+            
+            if (startFromTop) {
+                shootingStar.style.left = (Math.random() * 70 + 15) + '%'; // 15-85%
+                shootingStar.style.top = '-20px';
+            } else {
+                shootingStar.style.left = '105%';
+                shootingStar.style.top = Math.random() * 30 + '%'; // Upper third
+            }
+            
+            // Varied animation duration for more natural feel
+            const duration = Math.random() * 2.5 + 4; // 4-6.5 seconds (longer for longer tails)
+            shootingStar.style.animationDuration = duration + 's';
+            
+            container.appendChild(shootingStar);
+            activeShootingStars++;
+            
+            // Clean up after animation
+            setTimeout(() => {
+                if (shootingStar.parentNode) {
+                    shootingStar.parentNode.removeChild(shootingStar);
+                    activeShootingStars--;
+                }
+            }, duration * 1000);
+        }
+
+        // Start automatic shooting star creation
+        function startShootingStars() {
+            if (shootingStarInterval) return;
+            
+            shootingStarInterval = setInterval(() => {
+                if (Math.random() > 0.3) { // 70% chance
+                    createLongShootingStar();
+                }
+            }, shootingStarsConfig.shootingStarInterval);
+        }
+
+        // Stop shooting star creation
+        function stopShootingStars() {
+            if (shootingStarInterval) {
+                clearInterval(shootingStarInterval);
+                shootingStarInterval = null;
+            }
+        }
+
+        // Mobile optimization for shooting stars
+        function optimizeShootingStarsForDevice() {
+            if (window.innerWidth < 768) {
+                shootingStarsConfig.maxShootingStars = 2;
+                shootingStarsConfig.maxStaticStars = 60;
+                shootingStarsConfig.shootingStarInterval = 6000;
+            }
+        }
+
+        // Initialize shooting stars
+        function initShootingStars() {
+            // Check for reduced motion preference
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+            
+            optimizeShootingStarsForDevice();
+            createStaticStars();
+            startShootingStars();
+            
+            // Create initial shooting stars with staggered timing
+            setTimeout(() => createLongShootingStar(), 2000);
+            setTimeout(() => createLongShootingStar(), 4000);
+        }
+
+        // Handle page visibility for performance
+        document.addEventListener('visibilitychange', () => {
+            isPageVisible = !document.hidden;
+            
+            if (isPageVisible) {
+                startShootingStars();
+            } else {
+                stopShootingStars();
+            }
+        });
+
+        // Easter egg: Press 'S' for shooting star burst
+        document.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 's' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                // Create a burst of shooting stars
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => createLongShootingStar(), i * 300);
+                }
+            }
+        });
+
+        // Initialize shooting stars after other animations
+        setTimeout(initShootingStars, 1000);
     </script>
 </Layout>

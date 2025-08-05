@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import About from '../components/About.astro';
+import { personalInfo } from '../d_a_t_a_s/portfolio';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<Layout title="About - Arpita Patnaik">
+    <div class="mesh-bg"></div>
+    <Navigation baseUrl={baseUrl} />
+    
+    <main>
+        <About personalInfo={personalInfo} />
+        
+        <!-- Extended About Content -->
+        <section class="extended-about fade-in">
+            <div class="container">
+                <h2 class="section-title">My Journey</h2>
+                
+                <div class="journey-grid">
+                    <div class="journey-item">
+                        <h3>🎓 Academic Excellence</h3>
+                        <p>Currently pursuing Master's in Computer Science at University of Florida with a 3.63/4.0 GPA. My coursework focuses on advanced Machine Learning, Data Engineering, and Computer Network Security.</p>
+                    </div>
+                    
+                    <div class="journey-item">
+                        <h3>💼 Industry Experience</h3>
+                        <p>5+ years at Mindtree Ltd. (L&T Technology Services) as Senior Software Engineer, where I led performance optimization initiatives and built enterprise-scale systems serving millions of users.</p>
+                    </div>
+                    
+                    <div class="journey-item">
+                        <h3>🔬 Research & Innovation</h3>
+                        <p>Active in cutting-edge AI research, focusing on sentiment analysis, recommendation systems, and data privacy technologies. Published work in NLP and computer vision applications.</p>
+                    </div>
+                    
+                    <div class="journey-item">
+                        <h3>🏆 Recognition</h3>
+                        <p>Achievement Award Scholarship recipient for academic excellence. Led teams that delivered 75% performance improvements in production systems.</p>
+                    </div>
+                </div>
+                
+                <div class="philosophy">
+                    <h3>My Philosophy</h3>
+                    <blockquote>
+                        "Technology should solve real-world problems and create measurable impact. I believe in building intelligent systems that not only perform exceptionally but also contribute to human progress and business success."
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .extended-about {
+        padding: 80px 20px;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .journey-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+    
+    .journey-item {
+        background: rgba(255, 255, 255, 0.02);
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .journey-item:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-5px);
+    }
+    
+    .journey-item h3 {
+        color: var(--text-accent);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+    
+    .philosophy {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .philosophy h3 {
+        color: var(--text-primary);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+    
+    blockquote {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        font-style: italic;
+        padding: 30px;
+        background: rgba(0, 212, 255, 0.05);
+        border-left: 4px solid var(--text-accent);
+        border-radius: 0 15px 15px 0;
+    }
+</style>
