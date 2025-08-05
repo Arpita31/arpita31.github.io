@@ -1,5 +1,5 @@
 ---
-// src/pages/index.astro - Fixed Version with 40% Image Layout
+// src/pages/index.astro - Fixed Version with 40% Image Layout + Certifications Section
 import Layout from '../layouts/Layout.astro';
 import PerformanceOptimizer from '../components/PerformanceOptimizer.astro';
 
@@ -10,7 +10,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const personalInfo = {
   name: "Arpita Patnaik",
   title: "ML/AI Engineer & Senior Software Developer",
-  description: "With 5+ years of experience, I’m passionate about architecting intelligent systems that address real-world challenges and drive business results. I specialize in building scalable backend solutions, optimizing databases, and delivering impactful ML and NLP applications.",
+  description: "With 5+ years of experience, I'm passionate about architecting intelligent systems that address real-world challenges and drive business results. I specialize in building scalable backend solutions, optimizing databases, and delivering impactful ML and NLP applications.",
   email: "patnaikarpita100@gmail.com",
   linkedin: "https://www.linkedin.com/in/arpitapatnaik10",
   github: "https://github.com/arpita31",
@@ -23,6 +23,34 @@ const personalInfo = {
     // { value: "10+", label: "Projects" }
   ]
 };
+
+const certifications = [
+  {
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    date: "April 2, 2025", // Update with actual date
+    credentialId: "c247761b26674a028c320af6b4d85fe0", // Update with actual credential ID
+    description: "Validated expertise in designing distributed systems and applications on AWS cloud platform, including best practices for security, reliability, and cost optimization.",
+    icon: `${baseUrl}/aws-certification.png`, // Add AWS certification badge image
+    iconEmoji: "☁️",
+    verifyLink: "https://www.credly.com/badges/c247761b26674a028c320af6b4d85fe0", // Update with actual verification link
+    skills: ["Cloud Architecture", "AWS Services", "Security", "Scalability", "Cost Optimization"],
+    status: "active" // or "expired" if it needs renewal
+  }
+  // Add more certifications here as you earn them
+  // {
+  //   title: "Google Cloud Professional Machine Learning Engineer",
+  //   issuer: "Google Cloud",
+  //   date: "2024",
+  //   credentialId: "GCP-PMLE-2024-XXXXX",
+  //   description: "Expertise in designing, building, and productionizing ML models using Google Cloud technologies.",
+  //   icon: `${baseUrl}/gcp-ml-certification.png`,
+  //   iconEmoji: "🤖",
+  //   verifyLink: "https://www.credential.net/your-credential",
+  //   skills: ["ML Engineering", "Google Cloud", "MLOps", "AutoML", "TensorFlow"],
+  //   status: "active"
+  // }
+];
 
 const projects = [
   {
@@ -83,9 +111,10 @@ const projects = [
     <nav>
         <ul>
             <li><a href={`${baseUrl}`}>Home</a></li>
-            <li><a href={`${baseUrl}blog`}>Blog</a></li>
+            <!-- <li><a href={`${baseUrl}blog`}>Blog</a></li> -->
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -134,11 +163,11 @@ const projects = [
             <div class="about-text">
                 <h3>Innovation-Driven ML/AI/Software Engineer</h3>
                 <p>
-                    I’m a results-driven ML/AI Engineer and seasoned Software Developer with over 5 years of professional experience architecting intelligent, scalable systems in production. My expertise spans backend development, machine learning, NLP, and computer vision—building enterprise-grade solutions that serve millions. I specialize in creating robust architectures and deploying high-performance applications that drive measurable impact.
+                    I'm a results-driven ML/AI Engineer and seasoned Software Developer with over 5 years of professional experience architecting intelligent, scalable systems in production. My expertise spans backend development, machine learning, NLP, and computer vision—building enterprise-grade solutions that serve millions. I specialize in creating robust architectures and deploying high-performance applications that drive measurable impact.
                 </p>
                 <br>
                 <p>
-                    Recently graduated with a Master’s in Computer Science from the University of Florida (GPA: 3.63/4), I’ve led impactful projects in sentiment-aware recommendation engines, privacy-focused NLP platforms, and real-time image processing systems. I’m passionate about applying AI to solve real-world challenges, and I thrive at the intersection of deep tech, clean system design, and business value—delivering solutions that are innovative, secure, and production-ready.
+                    Recently graduated with a Master's in Computer Science from the University of Florida (GPA: 3.63/4), I've led impactful projects in sentiment-aware recommendation engines, privacy-focused NLP platforms, and real-time image processing systems. I'm passionate about applying AI to solve real-world challenges, and I thrive at the intersection of deep tech, clean system design, and business value—delivering solutions that are innovative, secure, and production-ready.
                 </p>
                 <br>
                 <div class="code-block">
@@ -228,6 +257,88 @@ const projects = [
                     <span class="skill-tag">XUnit</span>
                     <span class="skill-tag">TDD</span>
                     <span class="skill-tag">Postman</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="fade-in">
+        <h2 class="section-title">Professional Certifications</h2>
+        <div class="certifications-grid">
+            {certifications.map((cert, index) => (
+                <div class="certification-card">
+                    <div class="certification-header">
+                        <div class="certification-badge">
+                            <img 
+                                src={cert.icon} 
+                                alt={`${cert.title} badge`} 
+                                class="cert-badge-img"
+                                loading="lazy"
+                                onload="this.style.opacity = '1';"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                style="opacity: 0; transition: opacity 0.3s ease;"
+                            />
+                            <!-- Fallback emoji if image fails to load -->
+                            <div class="emoji-fallback cert-emoji" style="display: none;">
+                                {cert.iconEmoji}
+                            </div>
+                        </div>
+                        <div class="certification-info">
+                            <h3 class="certification-title">{cert.title}</h3>
+                            <div class="certification-issuer">{cert.issuer}</div>
+                            <div class="certification-date">Issued: {cert.date}</div>
+                            {cert.credentialId && (
+                                <div class="certification-credential">ID: {cert.credentialId}</div>
+                            )}
+                        </div>
+                        <div class={`certification-status ${cert.status}`}>
+                            {cert.status === 'active' ? '✅ Active' : '⚠️ Renewal Required'}
+                        </div>
+                    </div>
+                    
+                    <div class="certification-content">
+                        <p class="certification-description">{cert.description}</p>
+                        
+                        <div class="certification-skills">
+                            {cert.skills.map(skill => (
+                                <span class="cert-skill-tag">{skill}</span>
+                            ))}
+                        </div>
+                        
+                        <div class="certification-actions">
+                            {cert.verifyLink && (
+                                <a href={cert.verifyLink} class="cert-link verify-link" target="_blank" rel="noopener">
+                                    🔍 Verify Credential
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+            
+            <!-- Add more certifications placeholder -->
+            <div class="certification-card certification-placeholder">
+                <div class="certification-header">
+                    <div class="certification-badge">
+                        <div class="cert-emoji">🎯</div>
+                    </div>
+                    <div class="certification-info">
+                        <h3 class="certification-title">More Certifications Coming Soon</h3>
+                        <div class="certification-issuer">Continuous Learning Journey</div>
+                        <div class="certification-date">2025</div>
+                    </div>
+                </div>
+                <div class="certification-content">
+                    <p class="certification-description">
+                        Currently pursuing additional certifications in Machine Learning and Cloud Architectures to stay at the forefront of technology innovation.
+                    </p>
+                    <div class="certification-skills">
+                        <span class="cert-skill-tag">Machine Learning</span>
+                        <span class="cert-skill-tag">Data Engineering</span>
+                        <span class="cert-skill-tag">Kubernetes</span>
+                        <span class="cert-skill-tag">MLOps</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -338,7 +449,7 @@ const projects = [
         <h2 class="section-title">Let's Build the Future Together</h2>
         <div class="contact-content">
             <p class="contact-text">
-                I’m driven by a deep passion for building intelligent systems that solve meaningful, real-world problems at scale. With 5+ years of hands-on experience in production-grade software development and advanced AI/ML applications, I bring both engineering precision and creative problem-solving to every project. Whether you're seeking a Machine Learning Engineer, Backend Systems Architect, or innovative builder of AI-powered solutions, I’m excited to explore how we can create technology that truly makes a difference.
+                I'm driven by a deep passion for building intelligent systems that solve meaningful, real-world problems at scale. With 5+ years of hands-on experience in production-grade software development and advanced AI/ML applications, I bring both engineering precision and creative problem-solving to every project. Whether you're seeking a Machine Learning Engineer, Backend Systems Architect, or innovative builder of AI-powered solutions, I'm excited to explore how we can create technology that truly makes a difference.
             </p>
             <div class="contact-links">
                 <a href={`mailto:${personalInfo.email}`} class="contact-link">
@@ -350,7 +461,7 @@ const projects = [
                 <a href={personalInfo.github} class="contact-link" target="_blank" rel="noopener">
                     💻 GitHub
                 </a>
-                <a href={`${baseUrl}resume.pdf`} class="contact-link">
+                <a href={`${baseUrl}/resume.pdf`} class="contact-link">
                     📄 Resume
                 </a>
             </div>
@@ -359,8 +470,7 @@ const projects = [
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 {personalInfo.name}. Built with ❤️ and cutting-edge technology. AWS Certified Cloud Practitioner.</p>
-    </footer>
+        <p>&copy; 2025 {personalInfo.name}. Built with ❤️, driven by innovation and powered by purpose.
 
     <script define:vars={{ baseUrl }}>
         // 🎯 FIXED LOTTIE ANIMATION LOADER with correct base URL
@@ -694,4 +804,284 @@ const projects = [
         // Initialize shooting stars after other animations
         setTimeout(initShootingStars, 1000);
     </script>
+
+    <style>
+        /* Certifications Section Styles */
+        #certifications {
+            padding: 100px 5% 80px;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.4) 0%, rgba(30, 41, 59, 0.4) 100%);
+            position: relative;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        .certification-card {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certification-card:hover::before {
+            opacity: 1;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(79, 70, 229, 0.3);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+        }
+
+        .certification-placeholder {
+            border: 2px dashed rgba(148, 163, 184, 0.3);
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .certification-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-top: 0.5rem; /* Add padding to prevent overlap */
+        }
+
+        .certification-badge {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .cert-badge-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px;
+        }
+
+        .cert-emoji {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(79, 70, 229, 0.2);
+        }
+
+        .certification-info {
+            flex: 1;
+            min-width: 0;
+            padding-right: 100px; /* Add padding to prevent overlap with status badge */
+        }
+
+        .certification-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .certification-issuer {
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .certification-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .certification-credential {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .certification-status {
+            position: absolute;
+            top: -0.5rem; /* Move it slightly higher */
+            right: 0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap; /* Prevent text wrapping */
+            z-index: 1; /* Ensure it stays on top */
+        }
+
+        .certification-status.active {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .certification-status.expired {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .certification-content {
+            margin-top: 1rem;
+        }
+
+        .certification-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .certification-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-skill-tag {
+            background: rgba(79, 70, 229, 0.2);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(79, 70, 229, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .cert-skill-tag:hover {
+            background: rgba(79, 70, 229, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .certification-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .verify-link {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .verify-link:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .certifications-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .certification-card {
+                padding: 1.5rem;
+            }
+
+            .certification-header {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 2rem; /* More padding on mobile */
+            }
+
+            .certification-badge {
+                align-self: center;
+            }
+
+            .certification-info {
+                padding-right: 0; /* Remove right padding on mobile */
+            }
+
+            .certification-status {
+                position: absolute;
+                top: 0.5rem;
+                right: 0.5rem;
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+
+        /* Animation for certification cards */
+        .certification-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .certification-card:nth-child(1) { animation-delay: 0.1s; }
+        .certification-card:nth-child(2) { animation-delay: 0.2s; }
+        .certification-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add some sparkle effects for certifications */
+        .certification-card:hover .cert-emoji {
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.05) rotate(5deg); }
+            75% { transform: scale(1.05) rotate(-5deg); }
+        }
+    </style>
 </Layout>
