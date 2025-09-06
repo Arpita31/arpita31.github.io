@@ -121,9 +121,10 @@ Add your analytics tracking:
 
 Feel free to submit issues and enhancement requests!
 
-## 📄 License
+## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is licensed under a proprietary "All Rights Reserved" license.
+You may view the code, but you may not copy, modify, or redistribute it without permission.
 
 ---
 
